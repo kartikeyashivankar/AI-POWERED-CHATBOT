@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - InterviewAI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --warning: #ffcc00;
+            --danger: #dc3545;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background-color: #f9fafb;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .page-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .page-section {
+            padding: 100px 0;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .feature-detail {
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .feature-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-robot me-2"></i>InterviewAI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-primary me-2">Log In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">Powerful Features for Interview Success</h1>
+                    <p class="lead mb-4">Discover how our AI-powered platform transforms interview preparation with cutting-edge technology</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features -->
+    <section class="page-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title display-5 fw-bold">Core Features</h2>
+                    <p class="lead">Everything you need to ace your next interview</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>AI-Powered Simulations</h4>
+                        <p>Practice with realistic interview scenarios that adapt to your performance level and provide instant feedback.</p>
+                        <ul class="mt-3">
+                            <li>Adaptive question difficulty</li>
+                            <li>Real-time feedback</li>
+                            <li>Multiple interview types</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Performance Analytics</h4>
+                        <p>Track your progress with detailed reports, performance graphs, and skill-based recommendations.</p>
+                        <ul class="mt-3">
+                            <li>Detailed performance reports</li>
+                            <li>Progress tracking over time</li>
+                            <li>Skill gap analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h4>Gamified Learning</h4>
+                        <p>Earn points, badges, and level up as you improve your interview skills in an engaging environment.</p>
+                        <ul class="mt-3">
+                            <li>Achievement badges</li>
+                            <li>Progress levels</li>
+                            <li>Leaderboard competition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>AI Career Coach</h4>
+                        <p>Get personalized guidance and recommendations from your AI coach based on your performance.</p>
+                        <ul class="mt-3">
+                            <li>Personalized recommendations</li>
+                            <li>Career path guidance</li>
+                            <li>Skill development plans</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4>Video Analysis</h4>
+                        <p>Our AI analyzes your body language, eye contact, and facial expressions to provide comprehensive feedback.</p>
+                        <ul class="mt-3">
+                            <li>Body language analysis</li>
+                            <li>Eye contact tracking</li>
+                            <li>Facial expression evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card card p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Recruiter Tools</h4>
+                        <p>For companies: Evaluate candidates objectively with AI-generated scores and comparative analytics.</p>
+                        <ul class="mt-3">
+                            <li>Candidate scoring</li>
+                            <li>Comparative analytics</li>
+                            <li>Bias reduction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Features -->
+    <section class="page-section bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title display-5 fw-bold">Advanced Capabilities</h2>
+                    <p class="lead">Deep dive into our powerful AI technology</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="feature-detail">
+                        <h3>Speech & Tone Analysis</h3>
+                        <p>Our advanced AI analyzes your speech patterns, tone, and delivery to provide actionable feedback on your communication style.</p>
+                        <ul>
+                            <li>Speaking pace optimization</li>
+                            <li>Filler word detection</li>
+                            <li>Tone and confidence assessment</li>
+                            <li>Clarity and articulation analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="feature-image">
+                        <div style="background: var(--gradient); height: 300px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-microphone fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                    <div class="feature-detail">
+                        <h3>Content Evaluation</h3>
+                        <p>Get detailed feedback on the substance of your answers, including relevance, structure, and effectiveness.</p>
+                        <ul>
+                            <li>Answer relevance scoring</li>
+                            <li>Structure and organization analysis</li>
+                            <li>Keyword and concept recognition</li>
+                            <li>Industry-specific evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                    <div class="feature-image">
+                        <div style="background: var(--gradient); height: 300px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-chart-bar fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="feature-detail">
+                        <h3>Adaptive Learning</h3>
+                        <p>Our system learns from your performance and adapts the difficulty and focus of questions to target your weak areas.</p>
+                        <ul>
+                            <li>Personalized question banks</li>
+                            <li>Adaptive difficulty scaling</li>
+                            <li>Focus on improvement areas</li>
+                            <li>Progress-based recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="feature-image">
+                        <div style="background: var(--gradient); height: 300px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-brain fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="page-section" style="background: var(--gradient); color: white;">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-4">Ready to Experience These Features?</h2>
+                    <p class="lead mb-5">Start your free trial today and transform your interview preparation</p>
+                    <a href="signup.html" class="btn btn-light btn-lg px-5 py-3 me-3">Start Free Trial</a>
+                    <a href="pricing.html" class="btn btn-outline-light btn-lg px-5 py-3">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="mb-4"><i class="fas fa-robot me-2"></i>InterviewAI</h4>
+                    <p>The intelligent platform that helps job seekers practice and improve their interview skills with AI-powered simulations and feedback.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">Product</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="features.html" class="text-white text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="pricing.html" class="text-white text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Use Cases</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">Support</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="mb-4">Stay Updated</h5>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your email">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2023 InterviewAI. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for job seekers worldwide</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
